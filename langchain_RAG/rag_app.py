@@ -12,7 +12,7 @@ from sentence_transformers import CrossEncoder
 from streamlit.runtime.uploaded_file_manager import UploadedFile
 from dotenv import load_dotenv
 load_dotenv()
-# my_api_key = "AIzaSyBGdG7aYcClJvMQSdQCwQx3d7X_PACPNNA"
+
 # 🔹 Configure Gemini API Key
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))  # Set your Gemini API key
 
