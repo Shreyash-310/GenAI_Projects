@@ -37,6 +37,10 @@ def get_models():
     
     return models_list
 
+def stream_text(text):
+    for word in text.split():
+        yield word + " "
+
 def run():
     st.set_page_config(page_title="Chat Application")
     st.header("Chat :blue[Application]")
@@ -56,9 +60,8 @@ def run():
         st.session_state["chat_history"] += [HumanMessage(prompt)]
         output = llm.invoke(prompt)
 
-        # st.chat_message("ai").write(output.content)
         with st.chat_message("ai"):
-            ai_message = st.write_write(output)
+            ai_message = st.write_stream(stream_text(output.content))
         
         st.session_state["chat_history"] += [AIMessage(ai_message)]
 
