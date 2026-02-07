@@ -1,12 +1,15 @@
 import os
-from dotenv import load_dotenv
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from env_config import load_env
 from langchain_groq import ChatGroq
 
-load_dotenv()
+load_env()
 
 llm = ChatGroq(
     temperature = 0,
-    groq_api_key = os.getenv("groq_api_key"), # "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",
+    groq_api_key = os.getenv("groq_api_key"),
     model_name = os.getenv("llama_model_name")
 )
 

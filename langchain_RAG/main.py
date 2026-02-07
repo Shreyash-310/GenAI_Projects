@@ -2,7 +2,10 @@ import warnings
 warnings.filterwarnings("ignore")
 
 import os
-from dotenv import load_dotenv, find_dotenv
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from env_config import load_env
 
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import CharacterTextSplitter
@@ -13,10 +16,9 @@ from langchain.chains.retrieval import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain import hub
 
-load_dotenv()
+load_env()
 
 gemini_api_key = os.getenv('GOOGLE_API_KEY')
-# gemini_api_key = "AIzaSyA_bEYm4EvvktM9Xcnjv3tZnE9QJB_rjtE"
 
 class set_RAG:
 

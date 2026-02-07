@@ -1,10 +1,13 @@
-from dotenv import load_dotenv
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from env_config import load_env
 import streamlit as st
 import os
 from PIL import Image
 import google.generativeai as genai
 
-load_dotenv()
+load_env()
 
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 

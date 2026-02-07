@@ -3,11 +3,14 @@ import warnings
 warnings.filterwarnings("ignore")
 
 import os
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from env_config import load_env
 import whisper
 import google.generativeai as genai
 
-from dotenv import load_dotenv
-load_dotenv() ##load all the nevironment variables
+load_env() ##load all the nevironment variables
 
 class GenerateTranscript:
     def __init__(self):

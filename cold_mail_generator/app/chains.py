@@ -4,9 +4,12 @@ from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.exceptions import OutputParserException
 
 import os
-from dotenv import load_dotenv
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from env_config import load_env
 
-_ = load_dotenv()
+load_env()
 
 class Chain:
     def __init__(self):
